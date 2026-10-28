@@ -86,7 +86,7 @@ def create_payment():
     if calcuateTax:
         taxCalculation = calculate_tax(orderAmount, currency)
         params = {
-            'payment_method_types': formatted_payment_method_type,
+            'allowed_payment_method_types': formatted_payment_method_type,
             'amount': taxCalculation['amount_total'],
             'currency': currency,
             "metadata": {
@@ -95,7 +95,7 @@ def create_payment():
         } 
     else:
         params = {
-            'payment_method_types': formatted_payment_method_type,
+            'allowed_payment_method_types': formatted_payment_method_type,
             'amount': orderAmount,
             'currency': currency
         }

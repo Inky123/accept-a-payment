@@ -93,7 +93,7 @@ app.post('/create-payment-intent', async (req, res) => {
   if (calculateTax) {
     let taxCalculation = await calculate_tax(orderAmount, currency)
     params = {
-      payment_method_types: paymentMethodType === 'link' ? ['link', 'card'] : [paymentMethodType],
+      allowed_payment_method_types: paymentMethodType === 'link' ? ['link', 'card'] : [paymentMethodType],
       amount: taxCalculation.amount_total,
       currency: currency,
       metadata: { tax_calculation: taxCalculation.id }
@@ -101,7 +101,7 @@ app.post('/create-payment-intent', async (req, res) => {
   }
   else {
     params = {
-      payment_method_types: paymentMethodType === 'link' ? ['link', 'card'] : [paymentMethodType],
+      allowed_payment_method_types: paymentMethodType === 'link' ? ['link', 'card'] : [paymentMethodType],
       amount: orderAmount,
       currency: currency,
     }
