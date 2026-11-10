@@ -89,9 +89,9 @@ func handleCreatePaymentIntent(w http.ResponseWriter, r *http.Request) {
 	}
 
 	params := &stripe.PaymentIntentParams{
-		Amount:             stripe.Int64(5999),
-		Currency:           stripe.String(req.Currency),
-		PaymentMethodTypes: formattedPaymentMethodType,
+		Amount:                    stripe.Int64(5999),
+		Currency:                  stripe.String(req.Currency),
+		AllowedPaymentMethodTypes: formattedPaymentMethodType,
 	}
 
   // If this is for an ACSS payment, we add payment_method_options to create

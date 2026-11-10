@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
     if (calculateTax) {
       const taxCalculation = await calculate_tax(orderAmount, currency);
       params = {
-        payment_method_types:
+        allowed_payment_method_types:
           paymentMethodType === "link" ? ["link", "card"] : [paymentMethodType],
         amount: taxCalculation.amount_total,
         currency: currency,
@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
       };
     } else {
       params = {
-        payment_method_types:
+        allowed_payment_method_types:
           paymentMethodType === "link" ? ["link", "card"] : [paymentMethodType],
         amount: orderAmount,
         currency: currency,
